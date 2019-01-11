@@ -30,6 +30,7 @@ public class Renderer {
 		Matrix4f transformationMatrix = new Matrix4f();
 		transformationMatrix.setIdentity();
 		Matrix4f.translate(new Vector3f(0,0,-5), transformationMatrix, transformationMatrix);
+		Matrix4f.rotate((float) Math.toRadians(30), new Vector3f(0,0,1), transformationMatrix, transformationMatrix);
 		
 		this.objectRenderer.getObjectShader().startProgram();
 		this.objectRenderer.getObjectShader().loadViewMatrix(viewMatrix);
