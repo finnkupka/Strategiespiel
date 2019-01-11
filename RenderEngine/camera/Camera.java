@@ -1,5 +1,7 @@
 package camera;
 
+import main.DisplayManager;
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
@@ -30,30 +32,30 @@ public class Camera {
 	
 	public void update() {
 		
-		float SPEED = 0.1f;
+		float SPEED = 5f;
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			this.position.x += Math.sin(Math.toRadians(this.yaw)) * SPEED;
-			this.position.z -= Math.cos(Math.toRadians(this.yaw)) * SPEED;
+			this.position.x += Math.sin(Math.toRadians(this.yaw)) * SPEED * DisplayManager.DELTA;
+			this.position.z -= Math.cos(Math.toRadians(this.yaw)) * SPEED * DisplayManager.DELTA;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			this.position.x -= Math.sin(Math.toRadians(this.yaw)) * SPEED;
-			this.position.z += Math.cos(Math.toRadians(this.yaw)) * SPEED;
+			this.position.x -= Math.sin(Math.toRadians(this.yaw)) * SPEED * DisplayManager.DELTA;
+			this.position.z += Math.cos(Math.toRadians(this.yaw)) * SPEED * DisplayManager.DELTA;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) {
-			this.position.x += Math.sin(Math.toRadians(this.yaw - 90)) * SPEED;
-			this.position.z -= Math.cos(Math.toRadians(this.yaw - 90)) * SPEED;
+			this.position.x += Math.sin(Math.toRadians(this.yaw - 90)) * SPEED * DisplayManager.DELTA;
+			this.position.z -= Math.cos(Math.toRadians(this.yaw - 90)) * SPEED * DisplayManager.DELTA;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)) {
-			this.position.x += Math.sin(Math.toRadians(this.yaw + 90)) * SPEED;
-			this.position.z -= Math.cos(Math.toRadians(this.yaw + 90)) * SPEED;
+			this.position.x += Math.sin(Math.toRadians(this.yaw + 90)) * SPEED * DisplayManager.DELTA;
+			this.position.z -= Math.cos(Math.toRadians(this.yaw + 90)) * SPEED * DisplayManager.DELTA;
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
-			this.yaw -= 1.5f;
+			this.yaw -= 50f * DisplayManager.DELTA;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {
-			this.yaw += 1.5f;
+			this.yaw += 50f * DisplayManager.DELTA;
 		}
 	}
 	
