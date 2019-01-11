@@ -9,6 +9,7 @@ import java.util.List;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.openal.AL;
 import org.lwjgl.openal.AL10;
+import org.lwjgl.util.vector.Vector3f;
 import org.newdawn.slick.openal.WaveData;
 
 public class AudioMaster {
@@ -23,8 +24,8 @@ public class AudioMaster {
 		}
 	}
 	
-	public static void setListenerData() {
-		AL10.alListener3f(AL10.AL_POSITION, 0, 0, 0);
+	public static void setListenerData(Vector3f pos) {
+		AL10.alListener3f(AL10.AL_POSITION, pos.x, pos.y, pos.z);
 		AL10.alListener3f(AL10.AL_VELOCITY, 0, 0, 0);
 	}
 	

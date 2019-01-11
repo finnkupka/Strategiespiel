@@ -26,7 +26,7 @@ public class AudioComponent extends Component {
 	@Override
 	public int[] getRequiredComponents() {
 		int[] requiredComponents = {
-				
+				TRANSFORMATION_COMPONENT
 		};
 		return requiredComponents;
 	}

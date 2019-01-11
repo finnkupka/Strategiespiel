@@ -30,23 +30,24 @@ public class Main {
 		Loader loader = new Loader();
 		Renderer renderer = new Renderer();
 		RenderComponent.setRenderer(renderer);
-		AudioMaster.init();
-		AudioMaster.setListenerData();
-		
 		Camera camera = new Camera(new Vector3f(0,0,0), 0, 0, 0);
+		
+		AudioMaster.init();
+		AudioMaster.setListenerData(camera.getPosition()); //Not sure if this vector should be cloned...
 		
 		ArrayList<Entity> tempEntityList = new ArrayList<Entity>();
 		
 		//Sword Entity
 		Vao sword_vao = ObjLoader.loadObjModel("sword", loader);
 		TextureMap sword_texture = loader.loadTexture("sword");
-		GenericEntity sword_entity = new GenericEntity(new Vector3f(0, 0, -2), sword_vao, sword_texture, "audioTest");
+		GenericEntity sword_entity = new GenericEntity(new Vector3f(0, 0, -2), sword_vao, sword_texture);
+		sword_entity.addComponent(new AudioComponent("audioTest"));
 		tempEntityList.add(sword_entity);
 		
 		//Rock Entity
 		Vao rock_vao = ObjLoader.loadObjModel("rock", loader);
 		TextureMap rock_texture = loader.loadTexture("rock");
-		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture, "audioTest");
+		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture);
 		tempEntityList.add(rock_entity);
 		
 		while(!Display.isCloseRequested()) {
