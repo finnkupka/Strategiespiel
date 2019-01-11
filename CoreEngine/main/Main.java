@@ -10,6 +10,7 @@ import org.lwjgl.util.vector.Vector3f;
 import camera.Camera;
 import components.ModelComponent;
 import components.RenderComponent;
+import components.ShowcaseComponent;
 import components.TransformationComponent;
 import entities.Entity;
 import renderer.Renderer;
@@ -34,7 +35,7 @@ public class Main {
 		
 		Entity entity = new Entity();
 		entity.addComponent(new RenderComponent());
-		entity.addComponent(new TransformationComponent(new Vector3f(0, 0, -2), new Vector3f(0, 0, 0), 1));
+		entity.addComponent(new ShowcaseComponent(new Vector3f(0, 0, -2), new Vector3f(0, 0, 0), 1));
 		entity.addComponent(new ModelComponent(vao, texture));
 		entity.linkComponents();
 		

@@ -38,7 +38,7 @@ public class TransformationComponent extends Component {
 	
 	@Override
 	public void update() {
-		this.rotation.y += 0.5f;
+		
 	}
 	
 	@Override
