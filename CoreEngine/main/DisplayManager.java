@@ -26,7 +26,7 @@ public class DisplayManager {
 		
 		try {
 			
-			Display.setDisplayModeAndFullscreen(new DisplayMode(WIDTH, HEIGHT));
+			Display.setDisplayModeAndFullscreen(new DisplayMode(WIDTH-150, HEIGHT-250));
 			Display.create(new PixelFormat(), new ContextAttribs(3,2).withForwardCompatible(true).withProfileCore(true));
 			
 		} catch (LWJGLException e) {

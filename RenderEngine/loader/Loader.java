@@ -171,7 +171,7 @@ public class Loader {
 			GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_LOD_BIAS, -0.05f);
 			
 		} catch (Exception e) {
-			System.err.println("Could not load Texture " + fileName);
+			System.err.println("Missing Texture: \"" + fileName + "\"");
 			e.printStackTrace();
 			System.exit(-1);
 		}
@@ -241,5 +241,4 @@ public class Loader {
 			}
 		}
 	}
-
 }

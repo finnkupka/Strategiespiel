@@ -8,17 +8,13 @@ import org.lwjgl.util.vector.Vector3f;
 public class TransformationComponent extends Component {
 	
 	private Vector3f position;
-	private float rotationX;
-	private float rotationY;
-	private float rotationZ;
+	private Vector3f rotation;
 	private float scale;
 	
-	public TransformationComponent(Vector3f position, float rotationX, float rotationY, float rotationZ, float scale) {
+	public TransformationComponent(Vector3f position, Vector3f rotation, float scale) {
 		super();
 		this.position = position;
-		this.rotationX = rotationX;
-		this.rotationY = rotationY;
-		this.rotationZ = rotationZ;
+		this.rotation = rotation;
 		this.scale = scale;
 	}
 	
@@ -42,7 +38,7 @@ public class TransformationComponent extends Component {
 	
 	@Override
 	public void update() {
-		this.rotationY += 0.5f;
+		this.rotation.y += 0.5f;
 	}
 	
 	@Override
@@ -54,9 +50,9 @@ public class TransformationComponent extends Component {
 		Matrix4f transformationMatrix = new Matrix4f();
 		transformationMatrix.setIdentity();
 		Matrix4f.translate(this.position, transformationMatrix, transformationMatrix);
-		Matrix4f.rotate((float)Math.toRadians(this.rotationX), new Vector3f(1,0,0), transformationMatrix, transformationMatrix);
-		Matrix4f.rotate((float)Math.toRadians(this.rotationY), new Vector3f(0,1,0), transformationMatrix, transformationMatrix);
-		Matrix4f.rotate((float)Math.toRadians(this.rotationZ), new Vector3f(0,0,1), transformationMatrix, transformationMatrix);
+		Matrix4f.rotate((float)Math.toRadians(this.rotation.x), new Vector3f(1,0,0), transformationMatrix, transformationMatrix);
+		Matrix4f.rotate((float)Math.toRadians(this.rotation.y), new Vector3f(0,1,0), transformationMatrix, transformationMatrix);
+		Matrix4f.rotate((float)Math.toRadians(this.rotation.z), new Vector3f(0,0,1), transformationMatrix, transformationMatrix);
 		Matrix4f.scale(new Vector3f(this.scale, this.scale, this.scale), transformationMatrix, transformationMatrix);
 		return transformationMatrix;
 	}
@@ -65,16 +61,8 @@ public class TransformationComponent extends Component {
 		return this.position;
 	}
 	
-	public float getRotationX() {
-		return this.rotationX;
-	}
-	
-	public float getRotationY() {
-		return this.rotationY;
-	}
-	
-	public float getRotationZ() {
-		return this.rotationZ;
+	public Vector3f getRotation() {
+		return this.rotation;
 	}
 	
 	public float getScale() {

@@ -30,11 +30,11 @@ public class Main {
 		//ObjectShader objectShader = new ObjectShader();
 		
 		Vao vao = ObjLoader.loadObjModel("sword", loader);
-		TextureMap texture = loader.loadTexture("testTex");
+		TextureMap texture = loader.loadTexture("sword");
 		
 		Entity entity = new Entity();
 		entity.addComponent(new RenderComponent());
-		entity.addComponent(new TransformationComponent(new Vector3f(0, 0, -2), 0, 0, 0, 1));
+		entity.addComponent(new TransformationComponent(new Vector3f(0, 0, -2), new Vector3f(0, 0, 0), 1));
 		entity.addComponent(new ModelComponent(vao, texture));
 		entity.linkComponents();
 		
@@ -67,7 +67,5 @@ public class Main {
 		DisplayManager.closeDisplay();
 		
 		System.out.println("Ende");
-
 	}
-
 }
