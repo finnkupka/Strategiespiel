@@ -5,7 +5,12 @@ import loader.ObjLoader;
 import openglObjects.Vao;
 
 import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector3f;
 
+import components.ModelComponent;
+import components.RenderComponent;
+import components.TransformationComponent;
+import entities.Entity;
 import renderer.Renderer;
 import shader.ObjectShader;
 import texture.TextureMap;
@@ -18,34 +23,18 @@ public class Main {
 		
 		Loader loader = new Loader();
 		Renderer renderer = new Renderer();
+		RenderComponent.setRenderer(renderer);
 		
 		//ObjectShader objectShader = new ObjectShader();
 		
-		float[] positions = {
-			 0.5f,  0.5f, 0,
-			 0.5f, -0.5f, 0,
-			-0.5f,  0.5f, 0
-		};
-		
-		float[] textureCoords = {
-				 0.5f,  0.5f,
-				 0.5f, -0.5f,
-				-0.5f,  0.5f
-		};
-		
-		float[] normals = {
-				 0.5f,  0.5f, 0,
-				 0.5f, -0.5f, 0,
-				-0.5f,  0.5f, 0
-			};
-		
-		int[] indices = {
-				0,1,2
-		};
-		
-		//Vao vao = loader.loadToVao(positions, textureCoords, normals, indices);
 		Vao vao = ObjLoader.loadObjModel("sword", loader);
 		TextureMap texture = loader.loadTexture("testTex");
+		
+		Entity entity = new Entity();
+		entity.addComponent(new RenderComponent());
+		entity.addComponent(new TransformationComponent(new Vector3f(0, 0, -2), 0, 0, 0, 1));
+		entity.addComponent(new ModelComponent(vao, texture));
+		entity.linkComponents();
 		
 		while(!Display.isCloseRequested()) {
 			
@@ -54,9 +43,12 @@ public class Main {
 			//objectShader.startProgram();
 			
 			//renderer.render(vao);
-			renderer.getObjectRenderer().getObjectShader().startProgram();
-			renderer.getObjectRenderer().render(vao, texture);
-			renderer.getObjectRenderer().getObjectShader().stopProgram();
+			//renderer.getObjectRenderer().getObjectShader().startProgram();
+			//renderer.getObjectRenderer().render(vao, texture);
+			//renderer.getObjectRenderer().getObjectShader().stopProgram();
+			
+			entity.update();
+			entity.render();
 			
 			//objectShader.stopProgram();
 			
