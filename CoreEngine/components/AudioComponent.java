@@ -22,7 +22,6 @@ public class AudioComponent extends Component {
 			System.out.println("Missing File: \"" + fileName + "\"");
 		}
 		audioSource = new AudioSource(pos, 0.05f, 1);
-		System.out.println(pos);
 	}
 
 	@Override
