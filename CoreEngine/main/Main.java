@@ -57,9 +57,7 @@ public class Main {
 				e.update();
 				e.render();
 			}
-			
 			DisplayManager.updateDisplay();
-			
 		}
 		
 		loader.cleanUp();
