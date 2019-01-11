@@ -39,6 +39,7 @@ public abstract class Shader {
 		
 		StringBuilder shaderSource = new StringBuilder();
 		
+		
 		try {
 			
 			FileReader fileReader = new FileReader(new File("RenderEngine" + File.separator + fileName + ".glsl"));
