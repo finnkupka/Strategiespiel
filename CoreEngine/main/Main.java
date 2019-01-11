@@ -11,7 +11,6 @@ import org.lwjgl.util.vector.Vector3f;
 
 import audio.AudioMaster;
 import camera.Camera;
-import components.AudioComponent;
 import components.RenderComponent;
 import entities.Entity;
 import entities.GenericEntity;
@@ -30,21 +29,20 @@ public class Main {
 		Camera camera = new Camera(new Vector3f(0,0,0), 0, 0, 0);
 		
 		AudioMaster.init();
-		AudioMaster.setListenerData(camera.getPosition()); //Not sure if this vector should be cloned...
+		AudioMaster.setListenerData(camera.getPosition());
 		
 		ArrayList<Entity> tempEntityList = new ArrayList<Entity>();
 		
 		//Sword Entity
 		Vao sword_vao = ObjLoader.loadObjModel("sword", loader);
 		TextureMap sword_texture = loader.loadTexture("sword");
-		GenericEntity sword_entity = new GenericEntity(new Vector3f(0, 0, -2), sword_vao, sword_texture);
-		sword_entity.addComponent(new AudioComponent("audioTest"));
+		GenericEntity sword_entity = new GenericEntity(new Vector3f(0, 0, -2), sword_vao, sword_texture, "audioTest2");
 		tempEntityList.add(sword_entity);
 		
 		//Rock Entity
 		Vao rock_vao = ObjLoader.loadObjModel("rock", loader);
 		TextureMap rock_texture = loader.loadTexture("rock");
-		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture);
+		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture, "audioTest2");
 		tempEntityList.add(rock_entity);
 		
 		while(!Display.isCloseRequested()) {

@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.util.vector.Vector3f;
 
 import audio.AudioMaster;
 import audio.AudioSource;
@@ -13,14 +14,15 @@ public class AudioComponent extends Component {
 	int buffer;
 	AudioSource audioSource;
 	
-	public AudioComponent(String fileName) {
+	public AudioComponent(String fileName, Vector3f pos) {
 		super();
 		try {
 			buffer = AudioMaster.loadSound("Resources" + File.separator + fileName + ".wav");
 		} catch (Exception e) {
 			System.out.println("Missing File: \"" + fileName + "\"");
 		}
-		audioSource = new AudioSource();
+		audioSource = new AudioSource(pos, 0.05f, 1);
+		System.out.println(pos);
 	}
 
 	@Override

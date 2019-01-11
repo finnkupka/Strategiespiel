@@ -7,6 +7,8 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
+import audio.AudioMaster;
+
 public class Camera {
 	
 	private Vector3f position;
@@ -72,6 +74,8 @@ public class Camera {
 		}
 		//Failsafe:
 		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) Mouse.setGrabbed(false);
+		
+		AudioMaster.setListenerData(getPosition());
 		
 	}
 	
