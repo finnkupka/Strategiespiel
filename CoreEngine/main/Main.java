@@ -8,6 +8,7 @@ import org.lwjgl.opengl.Display;
 
 import renderer.Renderer;
 import shader.ObjectShader;
+import texture.TextureMap;
 
 public class Main {
 
@@ -44,6 +45,7 @@ public class Main {
 		
 		//Vao vao = loader.loadToVao(positions, textureCoords, normals, indices);
 		Vao vao = ObjLoader.loadObjModel("sword", loader);
+		TextureMap texture = loader.loadTexture("qdqwd");
 		
 		while(!Display.isCloseRequested()) {
 			
@@ -53,7 +55,7 @@ public class Main {
 			
 			//renderer.render(vao);
 			renderer.getObjectRenderer().getObjectShader().startProgram();
-			renderer.getObjectRenderer().render(vao, null);
+			renderer.getObjectRenderer().render(vao, texture);
 			renderer.getObjectRenderer().getObjectShader().stopProgram();
 			
 			//objectShader.stopProgram();
