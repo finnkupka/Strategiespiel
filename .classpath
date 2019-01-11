@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="CoreEngine"/>
+	<classpathentry kind="src" path="RenderEngine"/>
+	<classpathentry kind="src" path="Ressources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="libraries/jars/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="libraries/jars/lwjgl.jar">
