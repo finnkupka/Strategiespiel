@@ -21,8 +21,8 @@ public class Camera {
 		this.pitch = pitch;
 		this.yaw = yaw;
 		this.roll = roll;
-		this.speed = 5;          //Constructor worthy?
-		this.sensitivity = 0.1f; //Constructor worthy?
+		this.speed = 5;			//Constructor worthy?
+		this.sensitivity = 8;	//Constructor worthy?
 	}
 	
 	public Matrix4f generateViewMatrix() {
