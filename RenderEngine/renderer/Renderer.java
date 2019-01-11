@@ -5,6 +5,8 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
+import camera.Camera;
+
 public class Renderer {
 	
 	private ObjectRenderer objectRenderer;
@@ -15,7 +17,7 @@ public class Renderer {
 		this.objectRenderer = new ObjectRenderer();
 		
 		this.loadProjectionMatrix();
-		this.loadViewMatrix();
+		//this.loadViewMatrix();
 	}
 	
 	public void prepare() {
@@ -23,18 +25,11 @@ public class Renderer {
 		GL11.glClearColor(0.5f, 0.5f, 0.5f, 1);
 	}
 	
-	public void loadViewMatrix() {
-		Matrix4f viewMatrix = new Matrix4f();
-		viewMatrix.setIdentity();
-		
-		Matrix4f transformationMatrix = new Matrix4f();
-		transformationMatrix.setIdentity();
-		Matrix4f.translate(new Vector3f(0,0,-2), transformationMatrix, transformationMatrix);
-		Matrix4f.rotate((float) Math.toRadians(45), new Vector3f(0,0,1), transformationMatrix, transformationMatrix);
+	public void loadViewMatrix(Camera camera) {
+		Matrix4f viewMatrix = camera.generateViewMatrix();
 		
 		this.objectRenderer.getObjectShader().startProgram();
 		this.objectRenderer.getObjectShader().loadViewMatrix(viewMatrix);
-		this.objectRenderer.getObjectShader().loadTransformationMatrix(transformationMatrix);
 		this.objectRenderer.getObjectShader().stopProgram();
 	}
 	

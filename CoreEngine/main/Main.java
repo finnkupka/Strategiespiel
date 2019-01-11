@@ -7,6 +7,7 @@ import openglObjects.Vao;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 
+import camera.Camera;
 import components.ModelComponent;
 import components.RenderComponent;
 import components.TransformationComponent;
@@ -24,6 +25,8 @@ public class Main {
 		Renderer renderer = new Renderer();
 		RenderComponent.setRenderer(renderer);
 		
+		Camera camera = new Camera(new Vector3f(0,0,0), 0, 0, 0);
+		
 		//ObjectShader objectShader = new ObjectShader();
 		
 		Vao vao = ObjLoader.loadObjModel("sword", loader);
@@ -38,6 +41,9 @@ public class Main {
 		while(!Display.isCloseRequested()) {
 			
 			renderer.prepare();
+			
+			camera.update();
+			renderer.loadViewMatrix(camera);
 			
 			//objectShader.startProgram();
 			
