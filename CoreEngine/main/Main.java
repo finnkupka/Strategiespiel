@@ -45,7 +45,7 @@ public class Main {
 		
 		//Vao vao = loader.loadToVao(positions, textureCoords, normals, indices);
 		Vao vao = ObjLoader.loadObjModel("sword", loader);
-		TextureMap texture = loader.loadTexture("qdqwd");
+		TextureMap texture = loader.loadTexture("testTex");
 		
 		while(!Display.isCloseRequested()) {
 			
