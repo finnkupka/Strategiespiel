@@ -21,7 +21,9 @@ public class DisplayManager {
 	
 	public static float DELTA = 0;
 	private static long lastFrameTime = getTime();
-	private static float framerate = 0;
+	private static float frameRate = 0;
+	private static long frameCount = 0;
+	private static float showFramerate = 0;
 	
 	public static void createDisplay() {
 		
@@ -39,16 +41,19 @@ public class DisplayManager {
 	
 	public static void updateDisplay() {
 		
+		if (frameCount % 15 == 0) showFramerate = ((int) frameRate*10.0f)/10.0f;
+		
 		Display.sync(FPS);
 		Display.update();
 		
 		long currentFrameTime = getTime();
 		DELTA = (currentFrameTime - lastFrameTime) / 1000f;
 		lastFrameTime = currentFrameTime;
-		framerate = 1 / DELTA;
+		frameRate = 1 / DELTA;
 		
-		Display.setTitle(TITLE + "  FPS: " + framerate);
+		Display.setTitle(TITLE + " | " + showFramerate + " fps" + " | " + frameCount + " frames");
 		
+		frameCount++;
 	}
 	
 	public static void closeDisplay() {
