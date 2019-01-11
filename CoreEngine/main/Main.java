@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 
+import audio.AudioMaster;
 import camera.Camera;
+import components.AudioComponent;
 import components.ModelComponent;
 import components.RenderComponent;
 import components.ShowcaseComponent;
@@ -28,6 +30,8 @@ public class Main {
 		Loader loader = new Loader();
 		Renderer renderer = new Renderer();
 		RenderComponent.setRenderer(renderer);
+		AudioMaster.init();
+		AudioMaster.setListenerData();
 		
 		Camera camera = new Camera(new Vector3f(0,0,0), 0, 0, 0);
 		
@@ -36,13 +40,13 @@ public class Main {
 		//Sword Entity
 		Vao sword_vao = ObjLoader.loadObjModel("sword", loader);
 		TextureMap sword_texture = loader.loadTexture("sword");
-		GenericEntity sword_entity = new GenericEntity(new Vector3f(0, 0, -2), sword_vao, sword_texture);
+		GenericEntity sword_entity = new GenericEntity(new Vector3f(0, 0, -2), sword_vao, sword_texture, "audioTest");
 		tempEntityList.add(sword_entity);
 		
 		//Rock Entity
 		Vao rock_vao = ObjLoader.loadObjModel("rock", loader);
 		TextureMap rock_texture = loader.loadTexture("rock");
-		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture);
+		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture, "audioTest");
 		tempEntityList.add(rock_entity);
 		
 		while(!Display.isCloseRequested()) {
@@ -62,6 +66,7 @@ public class Main {
 		
 		loader.cleanUp();
 		renderer.cleanUp();
+		AudioMaster.cleanUp();
 		
 		DisplayManager.closeDisplay();
 		

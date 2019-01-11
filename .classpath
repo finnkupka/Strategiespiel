@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="CoreEngine"/>
 	<classpathentry kind="src" path="RenderEngine"/>
 	<classpathentry kind="src" path="Resources"/>
+	<classpathentry kind="src" path="AudioEngine"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="libraries/jars/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="libraries/jars/lwjgl.jar">
