@@ -15,7 +15,7 @@ import openglObjects.Vao;
 
 public class ObjLoader {
 	
-	public static Vao loadObjModel(String fileName, Loader loader/*, boolean withTangents*/) {
+	public static Vao loadObjModel(String fileName, Loader loader) {
 		 
 		List<Vector3f> positions = new ArrayList<Vector3f>();
 		List<Vector2f> textureCoords = new ArrayList<Vector2f>();
@@ -97,15 +97,6 @@ public class ObjLoader {
 			System.err.println("Could not load obj-file " + fileName);
 			System.exit(-1);
 		}
-		
-		/*
-		if(withTangents) {
-			
-			float[] tangentsArray = TangentGenerator.calculateTangents(indicesArray, positionsArray, textureCoordsArray);
-			return loader.loadToVao(positionsArray, textureCoordsArray, normalsArray, tangentsArray, indicesArray);
-			
-		}
-		*/
 		
 		return loader.loadToVao(positionsArray, textureCoordsArray, normalsArray, indicesArray);
 		

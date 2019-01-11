@@ -12,7 +12,6 @@ import components.RenderComponent;
 import components.TransformationComponent;
 import entities.Entity;
 import renderer.Renderer;
-import shader.ObjectShader;
 import texture.TextureMap;
 
 public class Main {

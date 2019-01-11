@@ -39,26 +39,13 @@ public class RenderComponent extends Component {
 	
 	@Override
 	public void update() {
-		/*
-		if(Configurations.WITH_NORMAL_MAPPING && this.modelComponent.hasNormalMap()) {
 			
-			renderer.getNormalMappedObjectRenderer().getNormalMappedObjectShader().startProgram();
-			renderer.getNormalMappedObjectRenderer().getNormalMappedObjectShader().loadTransformationMatrix(this.transformationComponent.generateTransformationMatrix());
-			Light[] lights = LightComponent.getLights(this.transformationComponent.getPosition());
-			renderer.getNormalMappedObjectRenderer().getNormalMappedObjectShader().loadLights(lights);
-			renderer.getNormalMappedObjectRenderer().render(this.modelComponent.getVao(), this.modelComponent.getTextureMap(), this.modelComponent.getNormalMap());
-			renderer.getNormalMappedObjectRenderer().getNormalMappedObjectShader().stopProgram();
-			
-		} else {*/
-			
-			renderer.getObjectRenderer().getObjectShader().startProgram();
-			renderer.getObjectRenderer().getObjectShader().loadTransformationMatrix(this.transformationComponent.generateTransformationMatrix());
-			//Light[] lights = LightComponent.getLights(this.transformationComponent.getPosition());
-			//renderer.getObjectRenderer().getObjectShader().loadLights(lights);
-			renderer.getObjectRenderer().render(this.modelComponent.getVao(), this.modelComponent.getTextureMap());
-			renderer.getObjectRenderer().getObjectShader().stopProgram();
-			
-		/*}*/
+		renderer.getObjectRenderer().getObjectShader().startProgram();
+		renderer.getObjectRenderer().getObjectShader().loadTransformationMatrix(this.transformationComponent.generateTransformationMatrix());
+		//Light[] lights = LightComponent.getLights(this.transformationComponent.getPosition());
+		//renderer.getObjectRenderer().getObjectShader().loadLights(lights);
+		renderer.getObjectRenderer().render(this.modelComponent.getVao(), this.modelComponent.getTextureMap());
+		renderer.getObjectRenderer().getObjectShader().stopProgram();
 		
 	}
 	
