@@ -1,6 +1,7 @@
 package main;
 
 import loader.Loader;
+import loader.ObjLoader;
 import openglObjects.Vao;
 
 import org.lwjgl.opengl.Display;
@@ -17,7 +18,7 @@ public class Main {
 		Loader loader = new Loader();
 		Renderer renderer = new Renderer();
 		
-		ObjectShader objectShader = new ObjectShader();
+		//ObjectShader objectShader = new ObjectShader();
 		
 		float[] positions = {
 			 0.5f,  0.5f, 0,
@@ -25,23 +26,48 @@ public class Main {
 			-0.5f,  0.5f, 0
 		};
 		
-		Vao vao = loader.loadToVao(positions, 3);
+		float[] textureCoords = {
+				 0.5f,  0.5f,
+				 0.5f, -0.5f,
+				-0.5f,  0.5f
+		};
+		
+		float[] normals = {
+				 0.5f,  0.5f, 0,
+				 0.5f, -0.5f, 0,
+				-0.5f,  0.5f, 0
+			};
+		
+		int[] indices = {
+				0,1,2
+		};
+		
+		//Vao vao = loader.loadToVao(positions, textureCoords, normals, indices);
+		Vao vao = ObjLoader.loadObjModel("sword", loader);
 		
 		while(!Display.isCloseRequested()) {
 			
 			renderer.prepare();
 			
-			objectShader.startProgram();
+			//objectShader.startProgram();
 			
-			renderer.render(vao);
+			//renderer.render(vao);
+			renderer.getObjectRenderer().getObjectShader().startProgram();
+			renderer.getObjectRenderer().render(vao, null);
+			renderer.getObjectRenderer().getObjectShader().stopProgram();
 			
-			objectShader.stopProgram();
+			//objectShader.stopProgram();
 			
 			DisplayManager.updateDisplay();
 			
 		}
 		
+		loader.cleanUp();
+		renderer.cleanUp();
+		
 		DisplayManager.closeDisplay();
+		
+		System.out.println("Ende");
 
 	}
 
