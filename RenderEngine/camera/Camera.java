@@ -29,17 +29,31 @@ public class Camera {
 	}
 	
 	public void update() {
+		
+		float SPEED = 0.1f;
+		
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			this.position.z -= 0.1f;
+			this.position.x += Math.sin(Math.toRadians(this.yaw)) * SPEED;
+			this.position.z -= Math.cos(Math.toRadians(this.yaw)) * SPEED;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			this.position.z += 0.1f;
+			this.position.x -= Math.sin(Math.toRadians(this.yaw)) * SPEED;
+			this.position.z += Math.cos(Math.toRadians(this.yaw)) * SPEED;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) {
-			this.position.x -= 0.1f;
+			this.position.x += Math.sin(Math.toRadians(this.yaw - 90)) * SPEED;
+			this.position.z -= Math.cos(Math.toRadians(this.yaw - 90)) * SPEED;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)) {
-			this.position.x += 0.1f;
+			this.position.x += Math.sin(Math.toRadians(this.yaw + 90)) * SPEED;
+			this.position.z -= Math.cos(Math.toRadians(this.yaw + 90)) * SPEED;
+		}
+		
+		if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
+			this.yaw -= 1.5f;
+		}
+		if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {
+			this.yaw += 1.5f;
 		}
 	}
 	
