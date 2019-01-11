@@ -53,10 +53,10 @@ public class Camera {
 			this.position.x += Math.sin(Math.toRadians(this.yaw + 90)) * speed * DisplayManager.DELTA;
 			this.position.z -= Math.cos(Math.toRadians(this.yaw + 90)) * speed * DisplayManager.DELTA;
 		}
-		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)  || Keyboard.isKeyDown(Keyboard.KEY_E)) {
 			this.position.y += speed * DisplayManager.DELTA;
 		}
-		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_Q)) {
 			this.position.y -= speed * DisplayManager.DELTA;
 		}
 		
