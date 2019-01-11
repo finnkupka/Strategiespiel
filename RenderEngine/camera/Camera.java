@@ -67,8 +67,8 @@ public class Camera {
 		    } else if (Mouse.getEventButton() == 0) Mouse.setGrabbed(false);
 		}
 		if(Mouse.isGrabbed()) {
-			this.yaw += Mouse.getDX() * sensitivity;
-			this.pitch -= Mouse.getDY() * sensitivity;
+			this.yaw += Mouse.getDX() * sensitivity * DisplayManager.DELTA;
+			this.pitch -= Mouse.getDY() * sensitivity * DisplayManager.DELTA;
 		}
 		//Failsafe:
 		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) Mouse.setGrabbed(false);
