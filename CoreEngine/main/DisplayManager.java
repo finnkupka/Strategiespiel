@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.ContextAttribs;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -28,6 +29,7 @@ public class DisplayManager {
 			
 			Display.setDisplayModeAndFullscreen(new DisplayMode(WIDTH-150, HEIGHT-250));
 			Display.create(new PixelFormat(), new ContextAttribs(3,2).withForwardCompatible(true).withProfileCore(true));
+			Mouse.create();
 			
 		} catch (LWJGLException e) {
 			e.printStackTrace();
@@ -52,6 +54,7 @@ public class DisplayManager {
 	public static void closeDisplay() {
 		
 		Display.destroy();
+		Mouse.destroy();
 		
 	}
 	

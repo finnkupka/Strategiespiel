@@ -3,6 +3,7 @@ package camera;
 import main.DisplayManager;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -12,12 +13,16 @@ public class Camera {
 	private float pitch;		//x-axis
 	private float yaw;			//y-axis
 	private float roll;			//z-axis
+	private float speed;
+	private float sensitivity;
 	
 	public Camera(Vector3f position, float pitch, float yaw, float roll) {
 		this.position = position;
 		this.pitch = pitch;
 		this.yaw = yaw;
 		this.roll = roll;
+		this.speed = 5;          //Constructor worthy?
+		this.sensitivity = 0.1f; //Constructor worthy?
 	}
 	
 	public Matrix4f generateViewMatrix() {
@@ -31,32 +36,43 @@ public class Camera {
 	}
 	
 	public void update() {
-		
-		float SPEED = 5f;
-		
+		//Keyboard Controls:
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			this.position.x += Math.sin(Math.toRadians(this.yaw)) * SPEED * DisplayManager.DELTA;
-			this.position.z -= Math.cos(Math.toRadians(this.yaw)) * SPEED * DisplayManager.DELTA;
+			this.position.x += Math.sin(Math.toRadians(this.yaw)) * speed * DisplayManager.DELTA;
+			this.position.z -= Math.cos(Math.toRadians(this.yaw)) * speed * DisplayManager.DELTA;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			this.position.x -= Math.sin(Math.toRadians(this.yaw)) * SPEED * DisplayManager.DELTA;
-			this.position.z += Math.cos(Math.toRadians(this.yaw)) * SPEED * DisplayManager.DELTA;
+			this.position.x -= Math.sin(Math.toRadians(this.yaw)) * speed * DisplayManager.DELTA;
+			this.position.z += Math.cos(Math.toRadians(this.yaw)) * speed * DisplayManager.DELTA;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) {
-			this.position.x += Math.sin(Math.toRadians(this.yaw - 90)) * SPEED * DisplayManager.DELTA;
-			this.position.z -= Math.cos(Math.toRadians(this.yaw - 90)) * SPEED * DisplayManager.DELTA;
+			this.position.x += Math.sin(Math.toRadians(this.yaw - 90)) * speed * DisplayManager.DELTA;
+			this.position.z -= Math.cos(Math.toRadians(this.yaw - 90)) * speed * DisplayManager.DELTA;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)) {
-			this.position.x += Math.sin(Math.toRadians(this.yaw + 90)) * SPEED * DisplayManager.DELTA;
-			this.position.z -= Math.cos(Math.toRadians(this.yaw + 90)) * SPEED * DisplayManager.DELTA;
+			this.position.x += Math.sin(Math.toRadians(this.yaw + 90)) * speed * DisplayManager.DELTA;
+			this.position.z -= Math.cos(Math.toRadians(this.yaw + 90)) * speed * DisplayManager.DELTA;
+		}
+		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+			this.position.y += speed * DisplayManager.DELTA;
+		}
+		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+			this.position.y -= speed * DisplayManager.DELTA;
 		}
 		
-		if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
-			this.yaw -= 50f * DisplayManager.DELTA;
+		//Simple Mouse Controls:
+		while (Mouse.next()){
+		    if (Mouse.getEventButtonState()) {
+		        if (Mouse.getEventButton() == 0) Mouse.setGrabbed(true);
+		    } else if (Mouse.getEventButton() == 0) Mouse.setGrabbed(false);
 		}
-		if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {
-			this.yaw += 50f * DisplayManager.DELTA;
+		if(Mouse.isGrabbed()) {
+			this.yaw += Mouse.getDX() * sensitivity;
+			this.pitch -= Mouse.getDY() * sensitivity;
 		}
+		//Failsafe:
+		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) Mouse.setGrabbed(false);
+		
 	}
 	
 	public Vector3f getPosition() {
