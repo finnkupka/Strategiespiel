@@ -13,33 +13,36 @@ public class AudioComponent extends Component {
 	
 	private int buffer;
 	private AudioSource audioSource;
+	private TransformComponent transformComponent;
 	
-	public AudioComponent(String fileName, Vector3f pos) {
+	public AudioComponent(String fileName) {
 		super();
 		try {
 			buffer = AudioMaster.loadSound("Resources" + File.separator + fileName + ".wav");
 		} catch (Exception e) {
 			System.out.println("Missing File: \"" + fileName + "\"");
 		}
-		audioSource = new AudioSource(pos, 0.05f, 1);
+		audioSource = new AudioSource(new Vector3f(0, 0, 0), 0.05f, 1);
 	}
 
 	@Override
 	public int[] getRequiredComponents() {
 		int[] requiredComponents = {
-				TRANSFORMATION_COMPONENT
+				Component.TRANSFORM_COMPONENT
 		};
 		return requiredComponents;
 	}
 
 	@Override
 	public void setRequiredComponents(List<Component> components) {
-		// No components required (yet)
+		this.transformComponent = (TransformComponent) components.get(0);
 	}
 
 	@Override
 	public void update() {
 		if (Keyboard.isKeyDown(Keyboard.KEY_P)) audioSource.play(buffer);
+		Vector3f pos = transformComponent.getPosition();
+		audioSource.setPosition(pos.x, pos.y, pos.z);
 	}
 
 	@Override

@@ -5,13 +5,13 @@ import java.util.List;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
-public class TransformationComponent extends Component {
+public class TransformComponent extends Component {
 	
 	private Vector3f position;
 	private Vector3f rotation;
 	private float scale;
 	
-	public TransformationComponent(Vector3f position, Vector3f rotation, float scale) {
+	public TransformComponent(Vector3f position, Vector3f rotation, float scale) {
 		super();
 		this.position = position;
 		this.rotation = rotation;
@@ -43,7 +43,7 @@ public class TransformationComponent extends Component {
 	
 	@Override
 	public int getType() {
-		return super.TRANSFORMATION_COMPONENT;
+		return super.TRANSFORM_COMPONENT;
 	}
 	
 	public Matrix4f generateTransformationMatrix() {

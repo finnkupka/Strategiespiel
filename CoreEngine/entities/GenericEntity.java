@@ -16,7 +16,7 @@ public class GenericEntity extends Entity {
 		this.addComponent(new RenderComponent());
 		this.addComponent(new ShowcaseComponent(position, new Vector3f(0, 0, 0), 1));
 		this.addComponent(new ModelComponent(vao, texture));
-		this.addComponent(new AudioComponent(fileName, position));
+		this.addComponent(new AudioComponent(fileName));
 		this.linkComponents();
 	}
 	

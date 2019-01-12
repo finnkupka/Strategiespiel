@@ -11,7 +11,7 @@ public class RenderComponent extends Component {
 	private static Renderer renderer;
 	
 	private ModelComponent modelComponent;
-	private TransformationComponent transformationComponent;
+	private TransformComponent transformationComponent;
 	
 	public RenderComponent() {
 		super();
@@ -21,7 +21,7 @@ public class RenderComponent extends Component {
 	public int[] getRequiredComponents() {
 		int[] requiredComponents = {
 				Component.MODEL_COMPONENT,
-				Component.TRANSFORMATION_COMPONENT
+				Component.TRANSFORM_COMPONENT
 		};
 		return requiredComponents;
 	}
@@ -29,7 +29,7 @@ public class RenderComponent extends Component {
 	@Override
 	public void setRequiredComponents(List<Component> components) {
 		this.modelComponent = (ModelComponent) components.get(0);
-		this.transformationComponent = (TransformationComponent) components.get(1);
+		this.transformationComponent = (TransformComponent) components.get(1);
 	}
 	
 	@Override

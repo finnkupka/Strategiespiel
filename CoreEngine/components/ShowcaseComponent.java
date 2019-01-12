@@ -3,7 +3,7 @@ package components;
 import org.lwjgl.util.vector.Vector3f;
 
 //Likely just a temporary component, can be used to show an entity
-public class ShowcaseComponent extends TransformationComponent {
+public class ShowcaseComponent extends TransformComponent {
 	
 	public ShowcaseComponent(Vector3f position, Vector3f rotation, float scale) {
 		super(position, rotation, scale);

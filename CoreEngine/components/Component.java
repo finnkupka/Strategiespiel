@@ -5,7 +5,7 @@ import java.util.List;
 public abstract class Component {
 	
 	public static final int MODEL_COMPONENT = 0;
-	public static final int TRANSFORMATION_COMPONENT = 1;
+	public static final int TRANSFORM_COMPONENT = 1;
 	public static final int RENDER_COMPONENT = 2;
 	public static final int LIGHT_COMPONENT = 3;
 	public static final int COLLISION_COMPONENT = 4;
