@@ -35,6 +35,4 @@ public class ShowcaseComponent extends Component {
 		return SHOWCASE_COMPONENT;
 	}
 	
-	
-	
 }

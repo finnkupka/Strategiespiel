@@ -9,6 +9,7 @@ import java.util.List;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.openal.AL;
 import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.AL11;
 import org.lwjgl.util.vector.Vector3f;
 import org.newdawn.slick.openal.WaveData;
 
@@ -16,6 +17,8 @@ public class AudioMaster {
 	
 	public static final float DEFAULT_VOLUME = 0.06f;
 	public static final float DEFAULT_PITCH = 1f;
+	public static final float DEFAULT_ROLLOFF_FACTOR = 1;
+	public static final float DEFAULT_REFERENCE_DISTANCE = 4;
 	private static List<Integer> buffers = new ArrayList<Integer>();
 	
 	public static void init() {
@@ -24,6 +27,7 @@ public class AudioMaster {
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
+		AL10.alDistanceModel(AL11.AL_EXPONENT_DISTANCE_CLAMPED);
 	}
 	
 	public static void setListenerData(Vector3f pos) {

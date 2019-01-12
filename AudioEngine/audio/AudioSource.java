@@ -12,6 +12,9 @@ public class AudioSource {
 		setVolume(volume);
 		setPitch(pitch);
 		setPosition(pos.x, pos.y, pos.z);
+		
+		AL10.alSourcef(sourceId, AL10.AL_ROLLOFF_FACTOR, AudioMaster.DEFAULT_ROLLOFF_FACTOR);
+		AL10.alSourcef(sourceId, AL10.AL_REFERENCE_DISTANCE, AudioMaster.DEFAULT_REFERENCE_DISTANCE);
 	}
 	
 	public void play(int buffer) {

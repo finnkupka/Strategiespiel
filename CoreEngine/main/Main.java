@@ -29,7 +29,7 @@ public class Main {
 		Camera camera = new Camera(new Vector3f(0,0,0), 0, 0, 0);
 		
 		AudioMaster.init();
-		AudioMaster.setListenerData(camera.getPosition());
+		
 		
 		ArrayList<Entity> tempEntityList = new ArrayList<Entity>();
 		
