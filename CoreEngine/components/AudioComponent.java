@@ -11,8 +11,8 @@ import audio.AudioSource;
 
 public class AudioComponent extends Component {
 	
-	int buffer;
-	AudioSource audioSource;
+	private int buffer;
+	private AudioSource audioSource;
 	
 	public AudioComponent(String fileName, Vector3f pos) {
 		super();
