@@ -4,11 +4,13 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
 
+import terrain.TerrainRenderer;
 import camera.Camera;
 
 public class Renderer {
 	
 	private ObjectRenderer objectRenderer;
+	private TerrainRenderer terrainRenderer;
 	
 	public Renderer() {
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -16,9 +18,9 @@ public class Renderer {
 		GL11.glCullFace(GL11.GL_BACK);
 		
 		this.objectRenderer = new ObjectRenderer();
+		this.terrainRenderer = new TerrainRenderer();
 		
 		this.loadProjectionMatrix();
-		//this.loadViewMatrix();
 	}
 	
 	public void prepare() {
@@ -32,6 +34,10 @@ public class Renderer {
 		this.objectRenderer.getObjectShader().startProgram();
 		this.objectRenderer.getObjectShader().loadViewMatrix(viewMatrix);
 		this.objectRenderer.getObjectShader().stopProgram();
+		
+		this.terrainRenderer.getTerrainShader().startProgram();
+		this.terrainRenderer.getTerrainShader().loadViewMatrix(viewMatrix);
+		this.terrainRenderer.getTerrainShader().stopProgram();
 	}
 	
 	public void loadProjectionMatrix() {
@@ -40,14 +46,23 @@ public class Renderer {
 		this.objectRenderer.getObjectShader().startProgram();
 		this.objectRenderer.getObjectShader().loadProjectionMatrix(projectionMatrix);
 		this.objectRenderer.getObjectShader().stopProgram();
+		
+		this.terrainRenderer.getTerrainShader().startProgram();
+		this.terrainRenderer.getTerrainShader().loadProjectionMatrix(projectionMatrix);
+		this.terrainRenderer.getTerrainShader().stopProgram();
 	}
 	
 	public ObjectRenderer getObjectRenderer() {
 		return this.objectRenderer;
 	}
 	
+	public TerrainRenderer getTerrainRenderer() {
+		return this.terrainRenderer;
+	}
+	
 	public void cleanUp() {
 		this.objectRenderer.cleanUp();
+		this.terrainRenderer.cleanUp();
 	}
 	
 	public Matrix4f generateProjectionMatrix() {

@@ -18,6 +18,10 @@ import components.RenderComponent;
 import entities.Entity;
 import entities.GenericEntity;
 import renderer.Renderer;
+import terrainTile.TerrainManager;
+import terrainTile.TerrainTextureLibrary;
+import terrainTile.TerrainTile;
+import terrainTile.TerrainTiler;
 import texture.TextureMap;
 
 public class Main {
@@ -30,9 +34,15 @@ public class Main {
 		Renderer renderer = new Renderer();
 		RenderComponent.setRenderer(renderer);
 		Camera camera = new Camera(new Vector3f(0,0,0), 0, 0, 0);
+		TerrainTile.setTerrainRenderer(renderer.getTerrainRenderer());
+		
+		TextureMap blendMap = loader.loadTexture("blendMap");
+		TerrainTextureLibrary terrainTextureLibrary = new TerrainTextureLibrary(loader);
+		
+		TerrainTile[][] terrainTiles = TerrainTiler.generateTerrainTiles(32, "heightMap", terrainTextureLibrary, blendMap, loader);
+		TerrainManager terrainManager = new TerrainManager(terrainTiles);
 		
 		AudioMaster.init();
-		
 		
 		ArrayList<Entity> tempEntityList = new ArrayList<Entity>();
 		
@@ -67,6 +77,13 @@ public class Main {
 			renderer.prepare();
 			camera.update();
 			renderer.loadViewMatrix(camera);
+			
+			for(TerrainTile[] t1 : terrainTiles) {
+				for(TerrainTile t2 : t1) {
+					t2.update();
+					t2.render();
+				}
+			}
 			
 			for (Entity e : tempEntityList) {
 				e.update();
