@@ -29,7 +29,21 @@ public class DisplayManager {
 		
 		try {
 			
-			Display.setDisplayModeAndFullscreen(new DisplayMode(WIDTH-150, HEIGHT-250));
+			DisplayMode[] displayModes = Display.getAvailableDisplayModes();
+			DisplayMode displayMode = null;
+			
+			for(DisplayMode d : displayModes) {
+				if(d.getWidth() == WIDTH && d.getHeight() == HEIGHT && d.isFullscreenCapable()) {
+					displayMode = d;
+					break;
+				}
+			}
+			
+			if(displayMode == null) {
+				displayMode = new DisplayMode(WIDTH-150, HEIGHT-250);
+			}
+			
+			Display.setDisplayModeAndFullscreen(displayMode);
 			Display.create(new PixelFormat(), new ContextAttribs(3,2).withForwardCompatible(true).withProfileCore(true));
 			Mouse.create();
 			

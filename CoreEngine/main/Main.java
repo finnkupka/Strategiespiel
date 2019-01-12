@@ -6,6 +6,7 @@ import openglObjects.Vao;
 
 import java.util.ArrayList;
 
+import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
@@ -53,6 +54,14 @@ public class Main {
 				GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_LINE);
 			} else if(Keyboard.isKeyDown(Keyboard.KEY_SUBTRACT)) {
 				GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
+			}
+			
+			if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+				try {
+					Display.setFullscreen(false);
+				} catch (LWJGLException e1) {
+					e1.printStackTrace();
+				}
 			}
 			
 			renderer.prepare();
