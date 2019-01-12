@@ -2,8 +2,6 @@ package components;
 
 import java.util.List;
 
-import org.lwjgl.util.vector.Vector3f;
-
 //Likely just a temporary component, can be used to show an entity
 public class ShowcaseComponent extends Component {
 	

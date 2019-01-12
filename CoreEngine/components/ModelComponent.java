@@ -47,7 +47,7 @@ public class ModelComponent extends Component {
 	
 	@Override
 	public int getType() {
-		return super.MODEL_COMPONENT;
+		return MODEL_COMPONENT;
 	}
 	
 	public Vao getVao() {

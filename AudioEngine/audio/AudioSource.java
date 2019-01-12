@@ -1,6 +1,5 @@
 package audio;
 
-import org.lwjgl.openal.AL;
 import org.lwjgl.openal.AL10;
 import org.lwjgl.util.vector.Vector3f;
 
