@@ -22,7 +22,7 @@ public class AudioComponent extends Component {
 		} catch (Exception e) {
 			System.out.println("Missing File: \"" + fileName + "\"");
 		}
-		audioSource = new AudioSource(new Vector3f(0, 0, 0), 0.05f, 1);
+		audioSource = new AudioSource(new Vector3f(0, 0, 0), AudioMaster.DEFAULT_VOLUME, AudioMaster.DEFAULT_PITCH);
 	}
 
 	@Override

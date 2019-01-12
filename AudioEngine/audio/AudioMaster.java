@@ -14,6 +14,8 @@ import org.newdawn.slick.openal.WaveData;
 
 public class AudioMaster {
 	
+	public static final float DEFAULT_VOLUME = 0.06f;
+	public static final float DEFAULT_PITCH = 1f;
 	private static List<Integer> buffers = new ArrayList<Integer>();
 	
 	public static void init() {
