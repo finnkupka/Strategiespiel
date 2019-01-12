@@ -6,7 +6,9 @@ import openglObjects.Vao;
 
 import java.util.ArrayList;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;
 
 import audio.AudioMaster;
@@ -46,6 +48,12 @@ public class Main {
 		tempEntityList.add(rock_entity);
 		
 		while(!Display.isCloseRequested()) {
+			
+			if(Keyboard.isKeyDown(Keyboard.KEY_ADD)) {
+				GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_LINE);
+			} else if(Keyboard.isKeyDown(Keyboard.KEY_SUBTRACT)) {
+				GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
+			}
 			
 			renderer.prepare();
 			camera.update();
