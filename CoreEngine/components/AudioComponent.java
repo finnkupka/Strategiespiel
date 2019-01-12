@@ -47,7 +47,7 @@ public class AudioComponent extends Component {
 
 	@Override
 	public void initialize() {
-		// Not necessary
+		
 	}
 
 	@Override

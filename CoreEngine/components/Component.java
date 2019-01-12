@@ -11,6 +11,7 @@ public abstract class Component {
 	public static final int COLLISION_COMPONENT = 4;
 	public static final int PICKING_COMPONENT = 5;
 	public static final int AUDIO_COMPONENT = 6;
+	public static final int SHOWCASE_COMPONENT = 7; //Temporary Component used during testing
 	
 	public Component() {
 		

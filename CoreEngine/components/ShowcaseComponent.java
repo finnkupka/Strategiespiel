@@ -1,17 +1,42 @@
 package components;
 
+import java.util.List;
+
 import org.lwjgl.util.vector.Vector3f;
 
 //Likely just a temporary component, can be used to show an entity
-public class ShowcaseComponent extends TransformComponent {
+public class ShowcaseComponent extends Component {
 	
-	public ShowcaseComponent(Vector3f position, Vector3f rotation, float scale) {
-		super(position, rotation, scale);
+	private TransformComponent transformComponent;
+	
+	@Override
+	public int[] getRequiredComponents() {
+		int[] requiredComponents = {
+				Component.TRANSFORM_COMPONENT
+		};
+		return requiredComponents;
 	}
-	
-	@Override //Changes rotation over time to show the entity from multiple sides
+
+	@Override
+	public void setRequiredComponents(List<Component> components) {
+		this.transformComponent = (TransformComponent) components.get(0);
+	}
+
+	@Override
 	public void update() {
-		this.getRotation().y += 0.5f;
+		this.transformComponent.getRotation().y += 0.3f;
 	}
+
+	@Override
+	public void initialize() {
+		
+	}
+
+	@Override
+	public int getType() {
+		return SHOWCASE_COMPONENT;
+	}
+	
+	
 	
 }

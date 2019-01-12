@@ -43,7 +43,7 @@ public class TransformComponent extends Component {
 	
 	@Override
 	public int getType() {
-		return super.TRANSFORM_COMPONENT;
+		return TRANSFORM_COMPONENT;
 	}
 	
 	public Matrix4f generateTransformationMatrix() {
