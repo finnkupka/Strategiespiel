@@ -58,6 +58,12 @@ public class Main {
 		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture, "audioTest2");
 		tempEntityList.add(rock_entity);
 		
+		//Building Entity
+		Vao building_vao = ObjLoader.loadObjModel("building", loader);
+		TextureMap building_texture = loader.loadTexture("building1colored");
+		GenericEntity building_entity = new GenericEntity(new Vector3f(-10, 0, -15), building_vao, building_texture, "audioTest2");
+		tempEntityList.add(building_entity);
+		
 		while(!Display.isCloseRequested()) {
 			
 			if(Keyboard.isKeyDown(Keyboard.KEY_ADD)) {
