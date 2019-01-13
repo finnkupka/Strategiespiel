@@ -91,7 +91,12 @@ public class Camera {
 	}
 	
 	private void calcPitchAndAngle() {
-		if (Mouse.isButtonDown(0)) {
+		while (Mouse.next()){
+		    if (Mouse.getEventButtonState()) {
+		        if (Mouse.getEventButton() == 0) Mouse.setGrabbed(true);
+		    } else if (Mouse.getEventButton() == 0) Mouse.setGrabbed(false);
+		}
+		if (Mouse.isGrabbed()) {
 			float angleDelta = Mouse.getDX() * 0.1f;
 			angle -= angleDelta;
 			float pitchDelta = Mouse.getDY() * 0.1f;
