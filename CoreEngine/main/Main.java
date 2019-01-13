@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;
 
 import audio.AudioMaster;
+import camera.CameraOLD;
 import camera.Camera;
 import components.RenderComponent;
 import entities.Entity;
@@ -33,7 +34,7 @@ public class Main {
 		Loader loader = new Loader();
 		Renderer renderer = new Renderer();
 		RenderComponent.setRenderer(renderer);
-		Camera camera = new Camera(new Vector3f(0,0,0), 0, 0, 0);
+		Camera camera = new Camera(new Vector3f(0,0,0));
 		TerrainTile.setTerrainRenderer(renderer.getTerrainRenderer());
 		
 		TextureMap blendMap = loader.loadTexture("blendMap");
@@ -82,7 +83,7 @@ public class Main {
 			
 			renderer.prepare();
 			camera.update();
-			renderer.loadViewMatrix(camera);
+			renderer.loadViewMatrix(camera.generateViewMatrix());
 			
 			for(TerrainTile[] t1 : terrainTiles) {
 				for(TerrainTile t2 : t1) {

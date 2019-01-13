@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
 
 import terrain.TerrainRenderer;
+import camera.CameraOLD;
 import camera.Camera;
 
 public class Renderer {
@@ -28,8 +29,7 @@ public class Renderer {
 		GL11.glClearColor(0.8f, 0.9f, 1f, 1);
 	}
 	
-	public void loadViewMatrix(Camera camera) {
-		Matrix4f viewMatrix = camera.generateViewMatrix();
+	public void loadViewMatrix(Matrix4f viewMatrix) {
 		
 		this.objectRenderer.getObjectShader().startProgram();
 		this.objectRenderer.getObjectShader().loadViewMatrix(viewMatrix);
