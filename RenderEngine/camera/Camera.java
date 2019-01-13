@@ -62,7 +62,7 @@ public class Camera {
 	private void constrainValues() {
 		if (pitch < 0) pitch = 0;
 		if (pitch > 90) pitch = 90;
-		if (distance < 1) distance = 5;
+		if (distance < 5) distance = 5;
 		if (distance > 75) distance = 75;
 	}
 	
