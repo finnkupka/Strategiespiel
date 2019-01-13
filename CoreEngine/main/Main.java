@@ -82,7 +82,7 @@ public class Main {
 			
 			renderer.prepare();
 			camera.update();
-			MouseManager.update();
+			//MouseManager.update();
 			renderer.loadViewMatrix(camera.generateViewMatrix());
 			
 			for(TerrainTile[] t1 : terrainTiles) {
