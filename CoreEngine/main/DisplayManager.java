@@ -35,10 +35,8 @@ public class DisplayManager {
 	
 	private static void createDisplayWindowed() {
 		try {
-			
 			Display.setDisplayModeAndFullscreen(new DisplayMode(WIDTH-200, HEIGHT-200));
 			Display.create(new PixelFormat(), new ContextAttribs(3,2).withForwardCompatible(true).withProfileCore(true));
-			Mouse.create();
 			
 		} catch (LWJGLException e) {
 			e.printStackTrace();
@@ -64,7 +62,6 @@ public class DisplayManager {
 			
 			Display.setDisplayModeAndFullscreen(displayMode);
 			Display.create(new PixelFormat(), new ContextAttribs(3,2).withForwardCompatible(true).withProfileCore(true));
-			Mouse.create();
 			
 		} catch (LWJGLException e) {
 			e.printStackTrace();
