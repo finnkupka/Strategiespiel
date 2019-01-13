@@ -29,6 +29,7 @@ public class DisplayManager {
 		
 		//createDisplayFullScreen();
 		createDisplayWindowed();
+		BufferManager.changeIcon();
 		
 	}
 	
@@ -97,5 +98,4 @@ public class DisplayManager {
 	public static long getTime() {
 		return Sys.getTime() * 1000 / Sys.getTimerResolution();
 	}
-
 }

@@ -5,8 +5,6 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
 
 import terrain.TerrainRenderer;
-import camera.CameraOLD;
-import camera.Camera;
 
 public class Renderer {
 	

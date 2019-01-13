@@ -52,7 +52,6 @@ public class Camera {
 	}
 	
 	public void update() {
-		System.out.println(Mouse.getX() + " " + Mouse.getY());
 		move();
 		calcZoom();
 		calcPitchAndAngle();

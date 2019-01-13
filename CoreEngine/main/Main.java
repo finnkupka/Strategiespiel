@@ -13,7 +13,6 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;
 
 import audio.AudioMaster;
-import camera.CameraOLD;
 import camera.Camera;
 import components.RenderComponent;
 import entities.Entity;
