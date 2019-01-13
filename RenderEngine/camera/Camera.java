@@ -5,6 +5,7 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
+import audio.AudioMaster;
 import main.DisplayManager;
 
 public class Camera {
@@ -51,12 +52,15 @@ public class Camera {
 	}
 	
 	public void update() {
+		System.out.println(Mouse.getX() + " " + Mouse.getY());
 		move();
 		calcZoom();
 		calcPitchAndAngle();
 		constrainValues();
 		calcCameraPosition(calcHorizontalDistance(), calcVerticalDistance());
 		yaw = 180 - angle;
+		
+		AudioMaster.setListenerData(position);
 	}
 	
 	private void constrainValues() {
