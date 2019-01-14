@@ -14,6 +14,7 @@ import org.lwjgl.util.vector.Vector3f;
 
 import audio.AudioMaster;
 import camera.Camera;
+import components.AudioComponent;
 import components.RenderComponent;
 import entities.Entity;
 import entities.GenericEntity;
@@ -49,19 +50,23 @@ public class Main {
 		//Sword Entity
 		Vao sword_vao = ObjLoader.loadObjModel("sword", loader);
 		TextureMap sword_texture = loader.loadTexture("sword");
-		GenericEntity sword_entity = new GenericEntity(new Vector3f(0, 0, -2), sword_vao, sword_texture, "audioTest2");
+		GenericEntity sword_entity = new GenericEntity(new Vector3f(0, 0, -2), sword_vao, sword_texture);
+		sword_entity.addComponent(new AudioComponent("audioTest2"));
+		sword_entity.linkComponents();
 		tempEntityList.add(sword_entity);
 		
 		//Rock Entity
 		Vao rock_vao = ObjLoader.loadObjModel("rock", loader);
 		TextureMap rock_texture = loader.loadTexture("rock");
-		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture, "audioTest2");
+		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture);
+		rock_entity.linkComponents();
 		tempEntityList.add(rock_entity);
 		
 		//Building Entity
 		Vao building_vao = ObjLoader.loadObjModel("building", loader);
 		TextureMap building_texture = loader.loadTexture("building1colored");
-		GenericEntity building_entity = new GenericEntity(new Vector3f(-10, 0, -15), building_vao, building_texture, "audioTest2");
+		GenericEntity building_entity = new GenericEntity(new Vector3f(-10, 0, -15), building_vao, building_texture);
+		building_entity.linkComponents();
 		tempEntityList.add(building_entity);
 		
 		while(!Display.isCloseRequested()) {

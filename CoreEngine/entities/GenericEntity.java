@@ -12,14 +12,12 @@ import texture.TextureMap;
 
 public class GenericEntity extends Entity {
 	
-	public GenericEntity(Vector3f position, Vao vao, TextureMap texture, String fileName) {
+	public GenericEntity(Vector3f position, Vao vao, TextureMap texture) {
 		super();
 		this.addComponent(new RenderComponent());
 		this.addComponent(new TransformComponent(position, new Vector3f(0, 0, 0), 1));
 		this.addComponent(new ShowcaseComponent());
 		this.addComponent(new ModelComponent(vao, texture));
-		this.addComponent(new AudioComponent(fileName));
-		this.linkComponents();
 	}
 	
 }

@@ -3,9 +3,11 @@ package audio;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lwjgl.BufferUtils;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.openal.AL;
 import org.lwjgl.openal.AL10;
@@ -30,9 +32,16 @@ public class AudioMaster {
 		AL10.alDistanceModel(AL11.AL_EXPONENT_DISTANCE_CLAMPED);
 	}
 	
-	public static void setListenerData(Vector3f pos) {
+	public static void setListenerPosition(Vector3f pos) {
 		AL10.alListener3f(AL10.AL_POSITION, pos.x, pos.y, pos.z);
-		AL10.alListener3f(AL10.AL_VELOCITY, 0, 0, 0);
+	}
+	
+	public static void setListenerOrientation(float yaw) {
+		FloatBuffer orientation = BufferUtils.createFloatBuffer(6).put(new float[]{
+				(float) Math.sin(Math.toRadians(yaw)), 0.0f, (float) -Math.cos(Math.toRadians(yaw)),
+				0.0f, 1.0f, 0.0f});
+		orientation.flip();
+		AL10.alListener(AL10.AL_ORIENTATION, orientation);
 	}
 	
 	public static int loadSound(String file) {

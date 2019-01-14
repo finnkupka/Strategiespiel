@@ -80,7 +80,6 @@ public class CameraOLD {
 		}
 		//Failsafe:
 		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) Mouse.setGrabbed(false);
-		AudioMaster.setListenerData(getPosition());
 		
 	}
 	
