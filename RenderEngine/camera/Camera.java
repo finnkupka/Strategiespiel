@@ -58,10 +58,10 @@ public class Camera {
 		constrainValues();
 		calcCameraPosition(calcHorizontalDistance(), calcVerticalDistance());
 		yaw = 180 - angle;
-		updateAudioOrientation();
+		updateAudioData();
 	}
 	
-	private void updateAudioOrientation() {
+	private void updateAudioData() {
 		AudioMaster.setListenerPosition(position);
 		AudioMaster.setListenerOrientation(yaw);
 	}

@@ -2,7 +2,6 @@ package entities;
 
 import org.lwjgl.util.vector.Vector3f;
 
-import components.AudioComponent;
 import components.ModelComponent;
 import components.RenderComponent;
 import components.ShowcaseComponent;
