@@ -2,6 +2,8 @@ package terrain;
 
 //import lighting.Light;
 
+import light.Light;
+
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector4f;
 
@@ -43,8 +45,6 @@ public class TerrainShader extends Shader {
 		
 		this.location_plane = super.getUniformLocation("plane");
 		
-		//this.location_lightPosition = super.getUniformLocation("lightPosition");
-		//this.location_lightColor = super.getUniformLocation("lightColor");
 	}
 	
 	public void loadTransformationMatrix(Matrix4f transformationMatrix) {
@@ -59,7 +59,7 @@ public class TerrainShader extends Shader {
 		super.loadMatrix4f(this.location_projectionMatrix, projectionMatrix);
 	}
 	
-	/*
+	
 	public void loadLight(Light light) {
 		super.loadVector3f(this.location_lightPosition[0], light.getPosition());
 		super.loadVector3f(this.location_lightColor[0], light.getColor());
@@ -74,7 +74,6 @@ public class TerrainShader extends Shader {
 			super.loadVector3f(this.location_attenuation[i], light.getAttenuation());
 		}
 	}
-	*/
 	
 	public void loadPlane(Vector4f plane) {
 		super.loadVector4f(this.location_plane, plane);

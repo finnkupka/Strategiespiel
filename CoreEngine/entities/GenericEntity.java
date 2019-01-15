@@ -1,7 +1,10 @@
 package entities;
 
+import light.Light;
+
 import org.lwjgl.util.vector.Vector3f;
 
+import components.LightComponent;
 import components.ModelComponent;
 import components.RenderComponent;
 import components.ShowcaseComponent;
@@ -17,6 +20,7 @@ public class GenericEntity extends Entity {
 		this.addComponent(new TransformComponent(position, new Vector3f(0, 0, 0), 1));
 		this.addComponent(new ShowcaseComponent());
 		this.addComponent(new ModelComponent(vao, texture));
+		this.addComponent(new LightComponent(new Light(new Vector3f(2,10,5), new Vector3f(1,0,1))));
 	}
 	
 }

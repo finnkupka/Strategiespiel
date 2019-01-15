@@ -2,8 +2,14 @@ package terrainTile;
 
 //import lighting.Light;
 
+import light.Light;
+
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
+
+
+
+import components.LightComponent;
 
 //import components.LightComponent;
 //import setup.Configurations;
@@ -81,8 +87,8 @@ public class TerrainTile {
 			terrainRenderer.getTerrainShader().loadTransformationMatrix(this.generateTransformationMatrix());
 			float x = (this.tileX + 0.5f) * Terrain.SIZE;
 			float z = (this.tileY + 0.5f) * Terrain.SIZE;
-			//Light[] lights = LightComponent.getLights(new Vector3f(x, this.getHeight(x, z), z));
-			//terrainRenderer.getTerrainShader().loadLights(lights);
+			Light[] lights = LightComponent.getLights(new Vector3f(x, this.getHeight(x, z), z));
+			terrainRenderer.getTerrainShader().loadLights(lights);
 			terrainRenderer.render(	this.terrain, this.textureMap1, this.textureMap2, this.textureMap3, this.textureMap4, 
 									this.blendMap);
 			terrainRenderer.getTerrainShader().stopProgram();
