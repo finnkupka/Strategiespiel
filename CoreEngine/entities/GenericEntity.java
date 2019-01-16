@@ -20,7 +20,7 @@ public class GenericEntity extends Entity {
 		this.addComponent(new TransformComponent(position, new Vector3f(0, 0, 0), 1));
 		this.addComponent(new ShowcaseComponent());
 		this.addComponent(new ModelComponent(vao, texture));
-		this.addComponent(new LightComponent(new Light(new Vector3f(2,10,5), new Vector3f(1,0,1))));
+		this.addComponent(new LightComponent(new Light(new Vector3f(2,10,5), new Vector3f(1,0.5f,1))));
 	}
 	
 }

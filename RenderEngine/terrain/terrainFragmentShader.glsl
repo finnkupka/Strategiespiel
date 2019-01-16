@@ -57,6 +57,6 @@ void main(void) {
 
 	vec4 textureColor = color1 + color2 + color3 + color4;
 	
-	color = textureColor;// * vec4(totalDiffuse, 1.0) + vec4(totalSpecular, 1.0);
+	color = textureColor * vec4(totalDiffuse, 1.0) + vec4(totalSpecular, 1.0);
 
 }
