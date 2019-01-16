@@ -95,6 +95,8 @@ public class Camera {
 	}
 	
 	private void calcPitchAndAngle() {
+		// This won't work after the update!!!
+		/*
 		while (Mouse.next()){
 		    if (Mouse.getEventButtonState()) {
 		        if (Mouse.getEventButton() == 0) Mouse.setGrabbed(true);
@@ -106,6 +108,7 @@ public class Camera {
 			float pitchDelta = Mouse.getDY() * 0.1f;
 			pitch -= pitchDelta;
 		}
+		*/
 	}
 	
 	public Matrix4f generateViewMatrix() {

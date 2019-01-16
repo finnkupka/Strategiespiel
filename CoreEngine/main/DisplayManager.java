@@ -35,7 +35,7 @@ public class DisplayManager {
 	
 	private static void createDisplayWindowed() {
 		try {
-			Display.setDisplayModeAndFullscreen(new DisplayMode(WIDTH-200, HEIGHT-200));
+			Display.setDisplayModeAndFullscreen(new DisplayMode(WIDTH/*-200*/, HEIGHT/*-200*/));
 			Display.create(new PixelFormat(), new ContextAttribs(3,2).withForwardCompatible(true).withProfileCore(true));
 			
 		} catch (LWJGLException e) {

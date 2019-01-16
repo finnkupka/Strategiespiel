@@ -5,11 +5,15 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
 
 import terrain.TerrainRenderer;
+import gui.GuiRenderer;
+import text.TextRenderer;
 
 public class Renderer {
 	
 	private ObjectRenderer objectRenderer;
 	private TerrainRenderer terrainRenderer;
+	private GuiRenderer guiRenderer;
+	private TextRenderer textRenderer;
 	
 	public Renderer() {
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -18,6 +22,8 @@ public class Renderer {
 		
 		this.objectRenderer = new ObjectRenderer();
 		this.terrainRenderer = new TerrainRenderer();
+		this.guiRenderer = new GuiRenderer();
+		this.textRenderer = new TextRenderer();
 		
 		this.loadProjectionMatrix();
 	}
@@ -58,8 +64,18 @@ public class Renderer {
 		return this.terrainRenderer;
 	}
 	
+	public GuiRenderer getGuiRenderer() {
+		return this.guiRenderer;
+	}
+	
+	public TextRenderer getTextRenderer() {
+		return this.textRenderer;
+	}
+	
 	public void cleanUp() {
 		this.objectRenderer.cleanUp();
+		this.terrainRenderer.cleanUp();
+		this.guiRenderer.cleanUp();
 		this.terrainRenderer.cleanUp();
 	}
 	

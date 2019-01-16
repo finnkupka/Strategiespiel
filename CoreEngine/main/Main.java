@@ -3,6 +3,7 @@ package main;
 import loader.Loader;
 import loader.ObjLoader;
 import openglObjects.Vao;
+import input.InputManager;
 
 import java.util.ArrayList;
 
@@ -12,20 +13,33 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;
 
+import chat.Chat;
 import audio.AudioMaster;
 import camera.Camera;
 import components.AudioComponent;
 import components.RenderComponent;
 import entities.Entity;
 import entities.GenericEntity;
+import gui.Gui;
+import gui.GuiBox;
+import gui.GuiButton;
+import gui.GuiComponent;
+import gui.GuiHorizontalSlider;
+import gui.GuiList;
+import gui.GuiTextField;
+import gui.GuiVerticalSlider;
 import renderer.Renderer;
 import terrainTile.TerrainManager;
 import terrainTile.TerrainTextureLibrary;
 import terrainTile.TerrainTile;
 import terrainTile.TerrainTiler;
+import text.Text;
+import text.TextGenerator;
 import texture.TextureMap;
 
 public class Main {
+	
+	public static boolean running = true;
 
 	public static void main(String[] args) {
 		
@@ -44,6 +58,19 @@ public class Main {
 		TerrainManager terrainManager = new TerrainManager(terrainTiles);
 		
 		AudioMaster.init();
+		
+		Text.textGenerator = new TextGenerator();
+		Gui.loadRectangle(loader);
+		GuiBox.loadTextures(loader);
+		GuiButton.loadTextures(loader);
+		GuiTextField.loadTexture(loader);
+		GuiList.loadTexture(loader);
+		GuiVerticalSlider.loadTexture(loader);
+		GuiHorizontalSlider.loadTexture(loader);
+		GuiComponent.setRenderers(renderer.getGuiRenderer(), renderer.getTextRenderer());
+		GuiComponent.setLoader(loader);
+		
+		Chat chat = new Chat(loader);
 		
 		ArrayList<Entity> tempEntityList = new ArrayList<Entity>();
 		
@@ -69,7 +96,9 @@ public class Main {
 		building_entity.linkComponents();
 		tempEntityList.add(building_entity);
 		
-		while(!Display.isCloseRequested()) {
+		while(!Display.isCloseRequested() && running) {
+			
+			InputManager.update();
 			
 			if(Keyboard.isKeyDown(Keyboard.KEY_ADD)) {
 				GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_LINE);
@@ -101,7 +130,13 @@ public class Main {
 				e.update();
 				e.render();
 			}
+			
+			chat.update();
+			chat.render();
+			
 			DisplayManager.updateDisplay();
+			
+			InputManager.clear();
 		}
 		
 		loader.cleanUp();
