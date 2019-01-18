@@ -57,8 +57,6 @@ public class Main {
 		TerrainTile[][] terrainTiles = TerrainTiler.generateTerrainTiles(32, "heightMap", terrainTextureLibrary, blendMap, loader);
 		TerrainManager terrainManager = new TerrainManager(terrainTiles);
 		
-		AudioMaster.init();
-		
 		Text.textGenerator = new TextGenerator();
 		Gui.loadRectangle(loader);
 		GuiBox.loadTextures(loader);
