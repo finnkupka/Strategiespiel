@@ -23,7 +23,7 @@ public class AudioMaster {
 	public static final float DEFAULT_REFERENCE_DISTANCE = 4;
 	private static List<Integer> buffers = new ArrayList<Integer>();
 	
-	public static void init() {
+	static {
 		try {
 			AL.create();
 		} catch (LWJGLException e) {
