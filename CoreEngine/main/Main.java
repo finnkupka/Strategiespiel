@@ -81,8 +81,8 @@ public class Main {
 		tempEntityList.add(sword_entity);
 		
 		//Rock Entity
-		Vao rock_vao = ObjLoader.loadObjModel("rock", loader);
-		TextureMap rock_texture = loader.loadTexture("rock");
+		Vao rock_vao = ObjLoader.loadObjModel("tree", loader);
+		TextureMap rock_texture = loader.loadTexture("treeTexture");
 		GenericEntity rock_entity = new GenericEntity(new Vector3f(0, 0, -5), rock_vao, rock_texture);
 		rock_entity.linkComponents();
 		tempEntityList.add(rock_entity);
