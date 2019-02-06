@@ -10,6 +10,8 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.PixelFormat;
 
+import renderer.Renderer;
+
 public class DisplayManager {
 	
 	private static final int FPS = 60;
@@ -81,6 +83,8 @@ public class DisplayManager {
 		frameRate = 1 / DELTA;
 		
 		Display.setTitle(TITLE + " | " + showFramerate + " fps" + " | " + frameCount + " frames");
+		
+		if (frameCount % 30 == 0) Renderer.updateBackgroundColor();
 		
 		frameCount++;
 	}

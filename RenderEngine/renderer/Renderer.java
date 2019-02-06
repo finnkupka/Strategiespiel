@@ -4,6 +4,7 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
 
+import firebase.FirebaseManager;
 import terrain.TerrainRenderer;
 import gui.GuiRenderer;
 import text.TextRenderer;
@@ -30,7 +31,16 @@ public class Renderer {
 	
 	public void prepare() {
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-		GL11.glClearColor(0.8f, 0.9f, 1f, 1);
+		updateBackgroundColor();
+	}
+	
+	public static void updateBackgroundColor() {
+		FirebaseManager.updateFirebaseData();
+		String color = FirebaseManager.getFirebaseData();
+		System.out.println(color);
+		GL11.glClearColor(FirebaseManager.rgb(color, 0)/255f,
+						  FirebaseManager.rgb(color, 1)/255f,
+						  FirebaseManager.rgb(color, 2)/255f, 1);
 	}
 	
 	public void loadViewMatrix(Matrix4f viewMatrix) {

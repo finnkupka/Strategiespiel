@@ -20,6 +20,7 @@ import components.AudioComponent;
 import components.RenderComponent;
 import entities.Entity;
 import entities.GenericEntity;
+import firebase.FirebaseManager;
 import gui.Gui;
 import gui.GuiBox;
 import gui.GuiButton;
@@ -44,6 +45,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		DisplayManager.createDisplay();
+		
+		FirebaseManager.updateFirebaseData();
 		
 		Loader loader = new Loader();
 		Renderer renderer = new Renderer();
@@ -93,6 +96,8 @@ public class Main {
 		GenericEntity building_entity = new GenericEntity(new Vector3f(-10, 0, -15), building_vao, building_texture);
 		building_entity.linkComponents();
 		tempEntityList.add(building_entity);
+		
+		System.out.println(FirebaseManager.getFirebaseData());
 		
 		while(!Display.isCloseRequested() && running) {
 			
